@@ -14,6 +14,7 @@ interface BlogPost {
   slug: string
   excerpt: string
   content: string
+  image_url: string
   published: boolean
   created_at: string
 }
@@ -38,6 +39,7 @@ export default function PostsPage() {
   const [title, setTitle] = useState("")
   const [slug, setSlug] = useState("")
   const [excerpt, setExcerpt] = useState("")
+  const [imageUrl, setImageUrl] = useState("")
   const [content, setContent] = useState("")
   const [published, setPublished] = useState(false)
 
@@ -53,13 +55,13 @@ export default function PostsPage() {
   useEffect(() => { loadPosts() }, [])
 
   function openNew() {
-    setTitle(""); setSlug(""); setExcerpt(""); setContent(""); setPublished(false)
+    setTitle(""); setSlug(""); setExcerpt(""); setImageUrl(""); setContent(""); setPublished(false)
     setEditingPost(null); setMsg(""); setView("new")
   }
 
   function openEdit(post: BlogPost) {
     setTitle(post.title); setSlug(post.slug); setExcerpt(post.excerpt ?? "")
-    setContent(post.content); setPublished(post.published)
+    setImageUrl(post.image_url ?? ""); setContent(post.content); setPublished(post.published)
     setEditingPost(post); setMsg(""); setView("edit")
   }
 
@@ -67,7 +69,7 @@ export default function PostsPage() {
     if (!title.trim() || !content.trim()) { setMsg("Title and content are required."); return }
     setSaving(true); setMsg("")
 
-    const payload = { title, slug: slug || generateSlug(title), excerpt, content, published }
+    const payload = { title, slug: slug || generateSlug(title), excerpt, image_url: imageUrl, content, published }
 
     if (editingPost) {
       const { error } = await supabase
@@ -202,6 +204,24 @@ export default function PostsPage() {
                 onChange={(e) => setExcerpt(e.target.value)}
                 placeholder="A brief 1-2 sentence summary..."
               />
+            </div>
+
+            <div className="space-y-2">
+              <Label>Feature Image URL <span className="text-gray-400 font-normal">(paste any image link, e.g. from Unsplash)</span></Label>
+              <Input
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
+                placeholder="https://images.unsplash.com/photo-..."
+              />
+              {imageUrl && (
+                <div className="relative w-full h-36 rounded-lg overflow-hidden border">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={imageUrl} alt="Preview" className="w-full h-full object-cover" />
+                </div>
+              )}
+              <p className="text-xs text-gray-400">
+                Free images: <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">unsplash.com</a> → open image → right click → Copy Image Address
+              </p>
             </div>
 
             <div className="space-y-2">
