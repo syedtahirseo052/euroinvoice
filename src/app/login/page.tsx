@@ -6,40 +6,42 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { FileText, Loader2 } from "lucide-react"
+import { FileText, Loader2, Eye, EyeOff } from "lucide-react"
 import { supabase } from "@/lib/supabase"
+
+const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL
 
 export default function LoginPage() {
   const router = useRouter()
   const [mode, setMode] = useState<"login" | "signup">("login")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [showPass, setShowPass] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const [success, setSuccess] = useState("")
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setLoading(true)
-    setError("")
-    setSuccess("")
+    setLoading(true); setError(""); setSuccess("")
 
     try {
       if (mode === "signup") {
         const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: {
-            emailRedirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard`,
-          },
+          email, password,
+          options: { emailRedirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard` },
         })
         if (error) throw error
-        setSuccess("Account created! Check your email to confirm your account.")
+        setSuccess("Account created! Check your email to confirm.")
       } else {
-        const { error } = await supabase.auth.signInWithPassword({ email, password })
+        const { data, error } = await supabase.auth.signInWithPassword({ email, password })
         if (error) throw error
-        router.push("/dashboard")
+        // Admin → go to admin panel, user → go to dashboard
+        if (data.user?.email === ADMIN_EMAIL) {
+          router.push("/admin")
+        } else {
+          router.push("/dashboard")
+        }
         router.refresh()
       }
     } catch (err: unknown) {
@@ -50,95 +52,155 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-16 bg-gray-50">
-      <div className="w-full max-w-sm">
-        {/* Logo */}
-        <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2 font-bold text-xl text-blue-600">
-            <FileText className="h-6 w-6" />
-            EuroInvoice
-          </Link>
+    <div className="min-h-screen flex bg-white">
+
+      {/* LEFT — branding panel */}
+      <div className="hidden lg:flex flex-col justify-between w-[45%] bg-slate-900 p-12">
+        <Link href="/" className="inline-flex items-center gap-2 font-bold text-xl text-white">
+          <div className="p-1.5 bg-blue-600 rounded-lg">
+            <FileText className="h-4 w-4 text-white" />
+          </div>
+          EuroInvoice
+        </Link>
+
+        <div>
+          <div className="text-5xl font-bold text-white leading-tight mb-6">
+            EU invoices in<br />
+            <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
+              60 seconds.
+            </span>
+          </div>
+          <p className="text-slate-400 text-lg leading-relaxed">
+            Professional, VAT-compliant PDF invoices for freelancers across Spain, Germany, France and more.
+          </p>
         </div>
 
-        <Card>
-          <CardHeader className="text-center">
-            <CardTitle>{mode === "login" ? "Welcome back" : "Create account"}</CardTitle>
-            <CardDescription>
-              {mode === "login"
-                ? "Sign in to access your invoices"
-                : "Free account — no credit card required"}
-            </CardDescription>
-          </CardHeader>
+        <div className="space-y-4">
+          {[
+            { icon: "⚡", text: "Ready in 60 seconds" },
+            { icon: "🔒", text: "EU-compliant by law" },
+            { icon: "💶", text: "VAT calculated automatically" },
+          ].map(({ icon, text }) => (
+            <div key={text} className="flex items-center gap-3 text-slate-400 text-sm">
+              <span className="text-lg">{icon}</span> {text}
+            </div>
+          ))}
+        </div>
+      </div>
 
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="you@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
+      {/* RIGHT — form */}
+      <div className="flex-1 flex items-center justify-center px-6 py-12">
+        <div className="w-full max-w-md">
+
+          {/* Mobile logo */}
+          <div className="lg:hidden text-center mb-8">
+            <Link href="/" className="inline-flex items-center gap-2 font-bold text-xl text-blue-600">
+              <div className="p-1.5 bg-blue-600 rounded-lg">
+                <FileText className="h-4 w-4 text-white" />
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+              EuroInvoice
+            </Link>
+          </div>
+
+          {/* Tabs */}
+          <div className="flex bg-gray-100 rounded-xl p-1 mb-8">
+            <button
+              onClick={() => { setMode("login"); setError(""); setSuccess("") }}
+              className={`flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all ${
+                mode === "login" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              Sign In
+            </button>
+            <button
+              onClick={() => { setMode("signup"); setError(""); setSuccess("") }}
+              className={`flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all ${
+                mode === "signup" ? "bg-white text-gray-900 shadow-sm" : "text-gray-500 hover:text-gray-700"
+              }`}
+            >
+              Create Account
+            </button>
+          </div>
+
+          <div className="mb-8">
+            <h1 className="text-2xl font-bold text-gray-900 mb-1">
+              {mode === "login" ? "Welcome back" : "Get started free"}
+            </h1>
+            <p className="text-gray-500 text-sm">
+              {mode === "login"
+                ? "Sign in to your EuroInvoice account"
+                : "Free account — no credit card required"}
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="space-y-1.5">
+              <Label htmlFor="email" className="text-sm font-medium text-gray-700">Email address</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="h-11"
+              />
+            </div>
+
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <Label htmlFor="password" className="text-sm font-medium text-gray-700">Password</Label>
+                {mode === "login" && (
+                  <Link href="/reset-password" className="text-xs text-blue-600 hover:underline">
+                    Forgot password?
+                  </Link>
+                )}
+              </div>
+              <div className="relative">
                 <Input
                   id="password"
-                  type="password"
+                  type={showPass ? "text" : "password"}
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   minLength={6}
+                  className="h-11 pr-10"
                 />
-              </div>
-
-              {/* Error / success messages */}
-              {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-md p-3">
-                  {error}
-                </div>
-              )}
-              {success && (
-                <div className="bg-green-50 border border-green-200 text-green-700 text-sm rounded-md p-3">
-                  {success}
-                </div>
-              )}
-
-              <Button className="w-full" size="lg" disabled={loading}>
-                {loading ? (
-                  <><Loader2 className="h-4 w-4 animate-spin mr-2" />Please wait...</>
-                ) : mode === "login" ? "Sign In" : "Create Free Account"}
-              </Button>
-            </form>
-
-            <div className="relative my-4">
-              <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t" />
-              </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-white px-2 text-muted-foreground">Or</span>
+                <button
+                  type="button"
+                  onClick={() => setShowPass(!showPass)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  {showPass ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                </button>
               </div>
             </div>
 
-            <Button
-              variant="outline"
-              className="w-full"
-              onClick={() => { setMode(mode === "login" ? "signup" : "login"); setError(""); setSuccess("") }}
-            >
-              {mode === "login" ? "Create free account" : "Already have account? Sign in"}
-            </Button>
+            {error && (
+              <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-xl p-3">
+                {error}
+              </div>
+            )}
+            {success && (
+              <div className="bg-green-50 border border-green-200 text-green-700 text-sm rounded-xl p-3">
+                {success}
+              </div>
+            )}
 
-            <p className="text-center text-xs text-gray-400 mt-4">
-              By signing up you agree to our{" "}
-              <Link href="#" className="underline">Terms</Link> and{" "}
-              <Link href="#" className="underline">Privacy Policy</Link>.
-            </p>
-          </CardContent>
-        </Card>
+            <Button className="w-full h-11 bg-blue-600 hover:bg-blue-700 text-base font-semibold" disabled={loading}>
+              {loading
+                ? <><Loader2 className="h-4 w-4 animate-spin mr-2" /> Please wait...</>
+                : mode === "login" ? "Sign In →" : "Create Free Account →"}
+            </Button>
+          </form>
+
+          <p className="text-center text-xs text-gray-400 mt-6">
+            By continuing you agree to our{" "}
+            <Link href="#" className="underline hover:text-gray-600">Terms</Link> and{" "}
+            <Link href="#" className="underline hover:text-gray-600">Privacy Policy</Link>.
+          </p>
+        </div>
       </div>
     </div>
   )
