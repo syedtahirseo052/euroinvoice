@@ -3,32 +3,43 @@ import { Button } from "@/components/ui/button"
 import type { Metadata } from "next"
 import {
   ArrowRight, CheckCircle2, Zap, ShieldCheck,
-  Star, BadgeEuro, Clock, Download, Globe, ChevronRight
+  BadgeEuro, Clock, Download, Globe, ChevronRight, X
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "EuroInvoice — Professional EU Invoice Generator for Freelancers",
+  title: "EuroInvoice — EU Invoice Generator for Freelancers | VAT Compliant",
   description:
-    "Create VAT-compliant EU invoices in 60 seconds. Supports Spain, Germany, France, Italy, Netherlands, Portugal & Belgium. Free PDF, no account needed.",
+    "Stop getting your invoices rejected. Create VAT-compliant EU invoices in 60 seconds. Correct VAT, reverse charge, country tax IDs — all automatic. Free PDF download.",
+  openGraph: {
+    title: "EuroInvoice — EU Invoice Generator for Freelancers",
+    description: "Stop getting your invoices rejected. VAT-compliant EU invoices in 60 seconds. Free PDF.",
+    type: "website",
+    images: [{ url: "https://charming-choux-c5a879.netlify.app/og-image.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "EuroInvoice — EU Invoice Generator",
+    description: "Stop getting your invoices rejected. VAT-compliant EU invoices in 60 seconds.",
+  },
 }
 
 const countries = [
-  { flag: "🇪🇸", name: "Spain",       taxId: "NIF",        vat: "21%" },
-  { flag: "🇩🇪", name: "Germany",     taxId: "Steuernr.",  vat: "19%" },
-  { flag: "🇫🇷", name: "France",      taxId: "SIRET",      vat: "20%" },
-  { flag: "🇮🇹", name: "Italy",       taxId: "P.IVA",      vat: "22%" },
-  { flag: "🇳🇱", name: "Netherlands", taxId: "BTW-nr",     vat: "21%" },
-  { flag: "🇵🇹", name: "Portugal",    taxId: "NIF",        vat: "23%" },
-  { flag: "🇧🇪", name: "Belgium",     taxId: "BTW/TVA",    vat: "21%" },
+  { flag: "🇪🇸", name: "Spain",       taxId: "NIF",        vat: "21%", href: "/es/plantilla-factura-autonomo-espana" },
+  { flag: "🇩🇪", name: "Germany",     taxId: "Steuernr.",  vat: "19%", href: "/de/rechnungsvorlage-freiberufler-deutschland" },
+  { flag: "🇫🇷", name: "France",      taxId: "SIRET",      vat: "20%", href: "/fr/modele-facture-auto-entrepreneur-france" },
+  { flag: "🇮🇹", name: "Italy",       taxId: "P.IVA",      vat: "22%", href: "/it/modello-fattura-partita-iva-italia" },
+  { flag: "🇳🇱", name: "Netherlands", taxId: "BTW-nr",     vat: "21%", href: "/generator" },
+  { flag: "🇵🇹", name: "Portugal",    taxId: "NIF",        vat: "23%", href: "/generator" },
+  { flag: "🇧🇪", name: "Belgium",     taxId: "BTW/TVA",    vat: "21%", href: "/generator" },
 ]
 
 const features = [
-  { icon: Zap,        title: "60-Second Invoices",       desc: "From blank form to ready-to-send PDF in under a minute.",                  bg: "bg-amber-50",   ic: "text-amber-600"   },
-  { icon: ShieldCheck,title: "EU-Compliant by Law",      desc: "All mandatory fields, correct formats — fully compliant with EU VAT law.", bg: "bg-emerald-50", ic: "text-emerald-600" },
-  { icon: BadgeEuro,  title: "Auto VAT + Reverse Charge",desc: "VAT calculated automatically. Cross-border EU invoice? Reverse charge added.", bg: "bg-blue-50",    ic: "text-blue-600"    },
-  { icon: Globe,      title: "7 EU Countries",           desc: "Spain, Germany, France, Italy, NL, Portugal, Belgium — and growing.",      bg: "bg-violet-50",  ic: "text-violet-600"  },
-  { icon: Download,   title: "Instant PDF Download",     desc: "Clean A4 PDF your clients and accountants will accept without question.",  bg: "bg-orange-50",  ic: "text-orange-600"  },
-  { icon: Clock,      title: "Zero Friction",            desc: "No account, no credit card, no setup. Open → fill → download. Done.",      bg: "bg-pink-50",    ic: "text-pink-600"    },
+  { icon: Zap,         title: "60-Second Invoices",        desc: "From blank form to ready-to-send PDF in under a minute.",                    bg: "bg-amber-50",   ic: "text-amber-600"   },
+  { icon: ShieldCheck, title: "Built for EU Law",          desc: "All mandatory fields, correct formats — designed for EU VAT law from day 1.", bg: "bg-emerald-50", ic: "text-emerald-600" },
+  { icon: BadgeEuro,   title: "Auto VAT + Reverse Charge", desc: "VAT calculated automatically. Cross-border EU invoice? Reverse charge added.", bg: "bg-blue-50",    ic: "text-blue-600"    },
+  { icon: Globe,       title: "7 EU Countries",            desc: "Spain, Germany, France, Italy, NL, Portugal, Belgium — and growing.",         bg: "bg-violet-50",  ic: "text-violet-600"  },
+  { icon: Download,    title: "Instant PDF Download",      desc: "Clean A4 PDF your clients and accountants will accept without question.",     bg: "bg-orange-50",  ic: "text-orange-600"  },
+  { icon: Clock,       title: "Zero Friction",             desc: "No account, no credit card, no setup. Open → fill → download. Done.",         bg: "bg-pink-50",    ic: "text-pink-600"    },
 ]
 
 const steps = [
@@ -46,31 +57,35 @@ export default function HomePage() {
         <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-blue-600 rounded-full opacity-[0.15] blur-3xl pointer-events-none" />
         <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] bg-violet-600 rounded-full opacity-[0.12] blur-3xl pointer-events-none" />
 
-        <div className="relative container max-w-6xl mx-auto px-4 py-24 md:py-32">
+        <div className="relative container max-w-6xl mx-auto px-4 py-20 md:py-28">
           <div className="grid md:grid-cols-2 gap-12 items-center">
 
             {/* LEFT — copy */}
             <div>
-              <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-white/70 text-xs font-semibold px-4 py-2 rounded-full mb-7 tracking-wide">
-                🇪🇺 &nbsp;Built for EU Freelancers · Always Free
+              {/* Competitive badge — strongest line up front */}
+              <div className="inline-flex items-center gap-2 bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-semibold px-4 py-2 rounded-full mb-6 tracking-wide">
+                <ShieldCheck className="h-3.5 w-3.5" /> Built for EU law. Not retrofitted.
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.1] mb-6">
-                EU Invoices in{" "}
-                <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
-                  60 Seconds.
+              <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-white leading-[1.08] mb-5">
+                Stop getting your<br />invoices{" "}
+                <span className="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
+                  rejected.
                 </span>
-                <br />VAT Included.
               </h1>
 
-              <p className="text-slate-400 text-lg leading-relaxed mb-8 max-w-lg">
-                Professional, legally compliant PDF invoices for freelancers in Spain, Germany, France and
-                4 more EU countries. Correct VAT, reverse charge, country tax IDs — all automatic.
+              <p className="text-slate-300 text-lg leading-relaxed mb-3 max-w-lg">
+                EU-compliant freelancer invoices in{" "}
+                <span className="text-white font-semibold">60 seconds.</span>{" "}
+                VAT, reverse-charge, and country tax IDs — all automatic.
+              </p>
+              <p className="text-slate-400 text-sm mb-8 max-w-md">
+                Spain, Germany, France, Italy + 3 more EU countries.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 mb-9">
                 <Link href="/generator">
-                  <Button size="lg" className="gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 h-12 w-full sm:w-auto text-base">
+                  <Button size="lg" className="gap-2 bg-blue-600 hover:bg-blue-700 text-white px-8 h-12 w-full sm:w-auto text-base shadow-lg shadow-blue-900/40">
                     Create Free Invoice <ArrowRight className="h-4 w-4" />
                   </Button>
                 </Link>
@@ -82,8 +97,8 @@ export default function HomePage() {
                 </Link>
               </div>
 
-              <div className="flex flex-wrap gap-5 text-sm text-slate-400">
-                {["No account needed", "No credit card", "Free PDF download"].map(t => (
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 text-sm text-slate-400">
+                {["No account needed", "Free PDF download", "Always free"].map(t => (
                   <span key={t} className="flex items-center gap-1.5">
                     <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" /> {t}
                   </span>
@@ -100,14 +115,14 @@ export default function HomePage() {
                   <div className="flex justify-between items-start mb-5">
                     <div>
                       <p className="text-[10px] font-bold text-gray-300 tracking-[0.15em] mb-0.5">INVOICE</p>
-                      <p className="text-lg font-bold text-gray-900">#INV-2024-042</p>
+                      <p className="text-lg font-bold text-gray-900">#INV-2025-042</p>
                     </div>
-                    <span className="bg-emerald-100 text-emerald-700 text-xs font-semibold px-2.5 py-1 rounded-full">✓ Paid</span>
+                    <span className="bg-blue-100 text-blue-700 text-xs font-semibold px-2.5 py-1 rounded-full">📤 Sent</span>
                   </div>
                   <div className="grid grid-cols-2 gap-2.5 mb-4">
                     <div className="bg-gray-50 rounded-xl p-3">
                       <p className="text-[10px] text-gray-400 mb-1.5 font-medium">FROM</p>
-                      <p className="font-semibold text-gray-900 text-xs">Carlos R.</p>
+                      <p className="font-semibold text-gray-900 text-xs">María R.</p>
                       <p className="text-gray-400 text-[10px]">NIF: 12345678A</p>
                       <p className="text-[10px] mt-0.5">🇪🇸 Spain</p>
                     </div>
@@ -142,20 +157,45 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── TRUST BAR ───────────────────────────────────────────────── */}
-      <section className="bg-gray-50 border-b py-5 px-4">
+      {/* ─── PROBLEM / SOLUTION ──────────────────────────────────────── */}
+      <section className="bg-white border-b py-14 px-4">
         <div className="container max-w-4xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-6 md:gap-10 text-sm text-gray-500 font-medium">
-            {[
-              { e: "⚡", t: "Ready in 60 seconds"   },
-              { e: "🔒", t: "No account needed"      },
-              { e: "📄", t: "Legal EU invoice PDF"   },
-              { e: "💶", t: "VAT auto-calculated"    },
-              { e: "🔄", t: "Reverse charge handled" },
-              { e: "✅", t: "Always free"            },
-            ].map(({ e, t }) => (
-              <span key={t} className="flex items-center gap-2">{e} {t}</span>
-            ))}
+          <div className="grid md:grid-cols-2 gap-6">
+
+            {/* Before */}
+            <div className="bg-red-50 border border-red-100 rounded-2xl p-7">
+              <div className="flex items-center gap-2 mb-5">
+                <div className="w-7 h-7 rounded-full bg-red-500 flex items-center justify-center shrink-0">
+                  <X className="h-3.5 w-3.5 text-white" />
+                </div>
+                <span className="text-sm font-bold text-red-700 uppercase tracking-wider">Today, without EuroInvoice</span>
+              </div>
+              <ul className="space-y-3 text-sm text-red-800">
+                <li className="flex items-start gap-2.5"><span className="text-red-400 mt-0.5 shrink-0">✗</span> 30+ minutes in Word or Excel per invoice</li>
+                <li className="flex items-start gap-2.5"><span className="text-red-400 mt-0.5 shrink-0">✗</span> Wrong VAT rate — your accountant rejects it</li>
+                <li className="flex items-start gap-2.5"><span className="text-red-400 mt-0.5 shrink-0">✗</span> Forget reverse-charge on EU cross-border invoices</li>
+                <li className="flex items-start gap-2.5"><span className="text-red-400 mt-0.5 shrink-0">✗</span> Missing tax ID format required by your country</li>
+                <li className="flex items-start gap-2.5"><span className="text-red-400 mt-0.5 shrink-0">✗</span> Client delays payment because invoice is non-compliant</li>
+              </ul>
+            </div>
+
+            {/* After */}
+            <div className="bg-emerald-50 border border-emerald-100 rounded-2xl p-7">
+              <div className="flex items-center gap-2 mb-5">
+                <div className="w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center shrink-0">
+                  <CheckCircle2 className="h-3.5 w-3.5 text-white" />
+                </div>
+                <span className="text-sm font-bold text-emerald-700 uppercase tracking-wider">With EuroInvoice</span>
+              </div>
+              <ul className="space-y-3 text-sm text-emerald-800">
+                <li className="flex items-start gap-2.5"><span className="text-emerald-500 mt-0.5 shrink-0">✓</span> 60 seconds from open to downloaded PDF</li>
+                <li className="flex items-start gap-2.5"><span className="text-emerald-500 mt-0.5 shrink-0">✓</span> Correct VAT rate for your country, auto-filled</li>
+                <li className="flex items-start gap-2.5"><span className="text-emerald-500 mt-0.5 shrink-0">✓</span> Reverse charge added automatically for EU clients</li>
+                <li className="flex items-start gap-2.5"><span className="text-emerald-500 mt-0.5 shrink-0">✓</span> Country-specific tax ID fields (NIF, SIRET, P.IVA…)</li>
+                <li className="flex items-start gap-2.5"><span className="text-emerald-500 mt-0.5 shrink-0">✓</span> Accountant-approved. Correct every time.</li>
+              </ul>
+            </div>
+
           </div>
         </div>
       </section>
@@ -232,12 +272,12 @@ export default function HomePage() {
               The right format for every EU country
             </h2>
             <p className="text-gray-500 text-lg max-w-xl mx-auto">
-              Each country has unique tax IDs, VAT rates, and legal requirements. We handle every one.
+              7 EU countries. Each has unique tax IDs, VAT rates, and legal requirements. We handle every one.
             </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {countries.map(({ flag, name, taxId, vat }) => (
-              <Link key={name} href="/generator">
+            {countries.map(({ flag, name, taxId, vat, href }) => (
+              <Link key={name} href={href}>
                 <div className="group bg-white border rounded-2xl p-5 text-center hover:border-blue-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
                   <div className="text-4xl mb-3">{flag}</div>
                   <div className="font-bold text-gray-900 text-sm mb-2">{name}</div>
@@ -255,22 +295,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── TESTIMONIAL ─────────────────────────────────────────────── */}
+      {/* ─── SOCIAL PROOF — stats instead of fake quote ──────────────── */}
       <section className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 py-20 px-4">
-        <div className="container max-w-3xl mx-auto text-center">
-          <div className="flex justify-center gap-1 mb-6">
-            {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 text-yellow-400 fill-yellow-400" />)}
+        <div className="container max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-blue-300 text-sm font-semibold uppercase tracking-widest mb-2">Why freelancers choose us</p>
+            <h2 className="text-3xl font-bold text-white">The numbers speak for themselves</h2>
           </div>
-          <blockquote className="text-xl md:text-2xl font-medium text-white leading-relaxed mb-8">
-            &ldquo;Finally an invoice tool that actually understands Spanish VAT and autónomo rules.
-            I used to spend 30 minutes per invoice in Word — now it&apos;s 90 seconds and my accountant loves it.&rdquo;
-          </blockquote>
-          <div className="flex items-center justify-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-violet-500 flex items-center justify-center text-white text-sm font-bold">CM</div>
-            <div className="text-left">
-              <p className="text-white text-sm font-semibold">Carlos M.</p>
-              <p className="text-slate-400 text-xs">Freelance Developer · Madrid, Spain</p>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { value: "7",     label: "EU Countries",        sub: "Spain, DE, FR, IT + 3 more" },
+              { value: "60s",   label: "To generate",         sub: "From open to PDF download"  },
+              { value: "€0",    label: "Always free",         sub: "No credit card needed"      },
+              { value: "100%",  label: "VAT compliant",       sub: "Built for EU law"           },
+            ].map(({ value, label, sub }) => (
+              <div key={label} className="text-center">
+                <p className="text-4xl font-bold text-white mb-1">{value}</p>
+                <p className="text-blue-300 text-sm font-semibold mb-1">{label}</p>
+                <p className="text-slate-500 text-xs">{sub}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link href="/generator">
+              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 gap-2 px-8 h-12">
+                Create Your First Invoice Free <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -289,7 +340,7 @@ export default function HomePage() {
               <p className="text-4xl font-bold text-gray-900 mb-1">€0</p>
               <p className="text-gray-400 text-sm mb-7">Forever · no credit card</p>
               <ul className="space-y-3 mb-8">
-                {["Create & download PDF invoices","All 7 EU countries","VAT & reverse charge","Unlimited invoices"].map(f => (
+                {["Create & download PDF invoices", "All 7 EU countries", "VAT & reverse charge auto-calculated", "Unlimited invoices"].map(f => (
                   <li key={f} className="flex items-start gap-2.5 text-sm text-gray-600">
                     <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0 mt-0.5" /> {f}
                   </li>
@@ -301,9 +352,14 @@ export default function HomePage() {
               <div className="absolute top-5 right-5 bg-white/25 text-white text-[10px] font-bold px-2.5 py-1 rounded-full tracking-wide">POPULAR</div>
               <p className="text-xs font-bold text-blue-200 tracking-widest uppercase mb-3">Pro</p>
               <p className="text-4xl font-bold text-white mb-1">€19</p>
-              <p className="text-blue-200 text-sm mb-7">per month · cancel anytime</p>
+              <p className="text-blue-200 text-sm mb-2">per month · cancel anytime</p>
+              {/* One killer feature lead */}
+              <div className="bg-white/15 rounded-xl px-4 py-3 mb-5">
+                <p className="text-white font-semibold text-sm">📬 Send invoices & track payment status</p>
+                <p className="text-blue-200 text-xs mt-1">Know exactly when your client receives and pays. No more chasing.</p>
+              </div>
               <ul className="space-y-3 mb-8">
-                {["Everything in Free","Saved invoice history","Client management","Priority support"].map(f => (
+                {["Everything in Free", "Full invoice history & records", "Client management"].map(f => (
                   <li key={f} className="flex items-start gap-2.5 text-sm text-blue-100">
                     <CheckCircle2 className="h-4 w-4 text-white shrink-0 mt-0.5" /> {f}
                   </li>
@@ -324,7 +380,7 @@ export default function HomePage() {
             No account. No credit card. No complicated settings. Open the generator, fill in the blanks, download your PDF.
           </p>
           <Link href="/generator">
-            <Button size="lg" className="gap-2 px-12 h-14 text-base shadow-lg shadow-blue-200 hover:shadow-blue-300 transition-shadow">
+            <Button size="lg" className="gap-2 px-12 h-14 text-base shadow-lg shadow-blue-200 hover:shadow-blue-300 transition-shadow bg-blue-600 hover:bg-blue-700">
               Create Free Invoice <ArrowRight className="h-5 w-5" />
             </Button>
           </Link>

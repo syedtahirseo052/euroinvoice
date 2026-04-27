@@ -12,8 +12,6 @@ const navLinks = [
   { href: "/generator",    label: "Invoice Generator" },
   { href: "/how-it-works", label: "How it Works"      },
   { href: "/pricing",      label: "Pricing"           },
-  { href: "/blog",         label: "Blog"              },
-  { href: "/about",        label: "About"             },
 ]
 
 export default function Navbar() {
@@ -28,7 +26,6 @@ export default function Navbar() {
     return () => subscription.unsubscribe()
   }, [])
 
-  // Close mobile menu on route change
   useEffect(() => { setMobileOpen(false) }, [pathname])
 
   async function handleLogout() {
@@ -49,7 +46,7 @@ export default function Navbar() {
           EuroInvoice
         </Link>
 
-        {/* Desktop nav */}
+        {/* Desktop nav — 3 core links only */}
         <nav className="hidden lg:flex items-center gap-1">
           {navLinks.map(({ href, label }) => {
             const active = pathname === href
