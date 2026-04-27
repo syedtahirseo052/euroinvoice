@@ -1,0 +1,342 @@
+[
+  {
+    "locale": "es",
+    "slug": "plantilla-factura-autonomo-espana",
+    "lang": "es",
+    "country": "ES",
+    "keyword": "plantilla factura autónomo España",
+    "monthlySearches": 22000,
+    "title": "Plantilla Factura Autónomo España — Gratis",
+    "metaDescription": "Crea facturas profesionales para autónomos en España con NIF, IVA correcto y en español. Descarga PDF gratis, sin registro.",
+    "h1": "Plantilla de Factura para Autónomos en España",
+    "intro": "Como autónomo en España, emitir facturas correctas es una obligación legal. Cada factura debe incluir tu NIF, la base imponible, el tipo de IVA aplicable (21%, 10% o 4%) y, si aplica, la retención del IRPF. Usar una plantilla de factura para autónomos en España te ahorra tiempo y evita errores que pueden acarrear sanciones de la Agencia Tributaria. EuroInvoice genera automáticamente facturas con todos los campos obligatorios según la normativa española: número de factura correlativo, fecha de expedición, datos completos del emisor y receptor, y el desglose de IVA requerido. Descarga tu factura en PDF en segundos, completamente gratis y sin necesidad de crear una cuenta.",
+    "faqs": [
+      {
+        "q": "¿Qué datos obligatorios debe tener una factura de autónomo en España?",
+        "a": "Número de factura correlativo, fecha de expedición, NIF del emisor y receptor, nombre y domicilio de ambas partes, descripción del servicio, base imponible, tipo de IVA, cuota de IVA y, si aplica, retención de IRPF."
+      },
+      {
+        "q": "¿Qué tipo de IVA aplico como autónomo?",
+        "a": "El tipo general es el 21%. Hay tipos reducidos del 10% (algunos servicios) y superreducido del 4%. La mayoría de servicios profesionales tributan al 21%."
+      },
+      {
+        "q": "¿Tengo que aplicar retención de IRPF en mis facturas?",
+        "a": "Sí, si eres autónomo en España y facturas a empresas o profesionales, debes aplicar una retención del 15% de IRPF (7% el primer año de actividad)."
+      },
+      {
+        "q": "¿Puedo facturar sin IVA a clientes de la UE?",
+        "a": "Sí. Las prestaciones de servicios a empresas de otros países de la UE se consideran operaciones intracomunitarias y están exentas de IVA, aplicándose la inversión del sujeto pasivo."
+      },
+      {
+        "q": "¿Cuánto tiempo debo conservar mis facturas?",
+        "a": "En España, las facturas deben conservarse durante un mínimo de 4 años (plazo de prescripción tributaria), aunque se recomienda guardarlas 5 años."
+      }
+    ]
+  },
+  {
+    "locale": "de",
+    "slug": "rechnungsvorlage-freiberufler-deutschland",
+    "lang": "de",
+    "country": "DE",
+    "keyword": "Rechnungsvorlage Freiberufler Deutschland",
+    "monthlySearches": 12000,
+    "title": "Rechnungsvorlage für Freiberufler in Deutschland — Kostenlos",
+    "metaDescription": "Erstelle professionelle Rechnungen für Freiberufler in Deutschland mit Steuernummer, korrekter MwSt. und auf Deutsch. PDF kostenlos herunterladen.",
+    "h1": "Rechnungsvorlage für Freiberufler in Deutschland",
+    "intro": "Als Freiberufler in Deutschland müssen Rechnungen bestimmte Pflichtangaben enthalten, die im Umsatzsteuergesetz (UStG) geregelt sind. Dazu gehören vollständiger Name und Anschrift, Steuernummer oder Umsatzsteuer-Identifikationsnummer, Rechnungsdatum und fortlaufende Rechnungsnummer, genaue Leistungsbeschreibung sowie der anzuwendende Steuersatz — in der Regel 19% oder 7% MwSt. Kleinunternehmer nach §19 UStG stellen Rechnungen ohne MwSt. aus. EuroInvoice erstellt automatisch korrekte Rechnungen nach deutschem Recht: mit Ihrer Steuernummer, dem richtigen MwSt.-Ausweis und allen gesetzlichen Pflichtfeldern. Laden Sie Ihre Rechnung als PDF herunter — kostenlos und ohne Anmeldung.",
+    "faqs": [
+      {
+        "q": "Welche Pflichtangaben muss eine Rechnung in Deutschland enthalten?",
+        "a": "Vollständiger Name und Anschrift beider Parteien, Steuernummer oder USt-IdNr., Rechnungsdatum, fortlaufende Rechnungsnummer, Leistungsbeschreibung, Nettobetrag, MwSt.-Satz und -Betrag sowie Bruttobetrag."
+      },
+      {
+        "q": "Welchen MwSt.-Satz muss ich als Freiberufler anwenden?",
+        "a": "Der Regelsteuersatz beträgt 19%. Für bestimmte Leistungen gilt der ermäßigte Satz von 7%. Als Kleinunternehmer (§19 UStG) stellen Sie Rechnungen ohne MwSt. aus."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen Steuernummer und USt-IdNr.?",
+        "a": "Die Steuernummer vergibt das Finanzamt für nationale Zwecke. Die USt-IdNr. (DE + 9 Ziffern) benötigen Sie für EU-Rechnungen. Für innergemeinschaftliche Leistungen ist die USt-IdNr. Pflicht."
+      },
+      {
+        "q": "Wie stelle ich als Freiberufler Rechnungen ins EU-Ausland?",
+        "a": "Bei B2B-Leistungen an EU-Unternehmen wenden Sie das Reverse-Charge-Verfahren an: Rechnung ohne deutsche MwSt., Hinweis auf §13b UStG. Der Empfänger schuldet die MwSt. im eigenen Land."
+      },
+      {
+        "q": "Wie lange muss ich Rechnungen in Deutschland aufbewahren?",
+        "a": "Rechnungen müssen 10 Jahre aufbewahrt werden (§147 AO). Die Frist beginnt mit dem Ende des Kalenderjahres, in dem die Rechnung ausgestellt wurde."
+      }
+    ]
+  },
+  {
+    "locale": "fr",
+    "slug": "modele-facture-auto-entrepreneur-france",
+    "lang": "fr",
+    "country": "FR",
+    "keyword": "modèle facture auto-entrepreneur France",
+    "monthlySearches": 33000,
+    "title": "Modèle Facture Auto-Entrepreneur France — Gratuit",
+    "metaDescription": "Créez des factures professionnelles pour auto-entrepreneurs en France avec SIRET, TVA correcte et en français. Téléchargez en PDF gratuitement.",
+    "h1": "Modèle de Facture pour Auto-Entrepreneur en France",
+    "intro": "En tant qu'auto-entrepreneur (micro-entrepreneur) en France, vous devez émettre des factures conformes au Code général des impôts. Votre facture doit obligatoirement mentionner votre numéro SIRET, la mention 'TVA non applicable, article 293 B du CGI' si vous êtes en franchise de TVA, ou le taux de TVA applicable dans le cas contraire. EuroInvoice génère automatiquement des factures conformes à la réglementation française : avec votre SIRET, les mentions légales obligatoires, et le calcul correct de la TVA selon votre régime. Téléchargez votre facture en PDF en quelques secondes, gratuitement et sans création de compte.",
+    "faqs": [
+      {
+        "q": "Quelles mentions obligatoires doit contenir une facture d'auto-entrepreneur ?",
+        "a": "Date, numéro de facture séquentiel, nom et adresse des deux parties, numéro SIRET, description de la prestation, montant HT, taux et montant de TVA (ou mention d'exonération), et montant TTC."
+      },
+      {
+        "q": "Un auto-entrepreneur doit-il facturer la TVA ?",
+        "a": "En franchise de base de TVA (seuils : 36 800 € pour les services), vous ne facturez pas la TVA et mentionnez 'TVA non applicable, art. 293 B du CGI'. Au-delà des seuils, vous devenez redevable de la TVA."
+      },
+      {
+        "q": "Qu'est-ce que le numéro SIRET et où le trouver ?",
+        "a": "Le SIRET est un identifiant de 14 chiffres attribué par l'INSEE à votre établissement. Vous le trouvez sur votre avis de situation SIRENE reçu lors de votre immatriculation."
+      },
+      {
+        "q": "Comment facturer un client professionnel dans un autre pays de l'UE ?",
+        "a": "Pour les prestations B2B intra-UE, la TVA est autoliquidée par le client. Mentionnez 'Autoliquidation - Art. 196 Directive TVA UE' sur la facture et n'appliquez pas de TVA française."
+      },
+      {
+        "q": "Combien de temps conserver ses factures en France ?",
+        "a": "Les factures doivent être conservées 10 ans à compter de la clôture de l'exercice comptable (article L123-22 du Code de commerce)."
+      }
+    ]
+  },
+  {
+    "locale": "de",
+    "slug": "rechnungsvorlage-kleinunternehmer",
+    "lang": "de",
+    "country": "DE",
+    "keyword": "Rechnungsvorlage Kleinunternehmer",
+    "monthlySearches": 18000,
+    "title": "Rechnungsvorlage Kleinunternehmer (§19 UStG) — Kostenlos",
+    "metaDescription": "Korrekte Rechnungsvorlage für Kleinunternehmer nach §19 UStG. Ohne MwSt.-Ausweis, mit Pflichtangaben. PDF kostenlos herunterladen.",
+    "h1": "Rechnungsvorlage für Kleinunternehmer nach §19 UStG",
+    "intro": "Als Kleinunternehmer nach §19 UStG dürfen Sie keine Umsatzsteuer in Ihren Rechnungen ausweisen — und Sie müssen zwingend einen entsprechenden Hinweis auf die Kleinunternehmerregelung aufnehmen. Der Hinweis lautet üblicherweise: 'Gemäß §19 UStG wird keine Umsatzsteuer berechnet.' Fehlt dieser Hinweis, riskieren Sie Rückfragen vom Finanzamt und Beanstandungen durch Ihren Auftraggeber. EuroInvoice erstellt automatisch korrekte Kleinunternehmer-Rechnungen: ohne MwSt.-Ausweis, mit dem gesetzlich erforderlichen §19-Hinweis und allen Pflichtangaben nach deutschem Recht. Kostenlos als PDF herunterladen, ohne Anmeldung.",
+    "faqs": [
+      {
+        "q": "Wer gilt als Kleinunternehmer nach §19 UStG?",
+        "a": "Wer im Vorjahr weniger als 22.000 € Umsatz hatte und im laufenden Jahr voraussichtlich nicht mehr als 50.000 € einnimmt, kann die Kleinunternehmerregelung anwenden."
+      },
+      {
+        "q": "Welchen Hinweis muss ich als Kleinunternehmer auf der Rechnung angeben?",
+        "a": "Sie müssen auf §19 UStG hinweisen, z.B.: 'Gemäß §19 UStG wird keine Umsatzsteuer berechnet.' oder 'Als Kleinunternehmer im Sinne von §19 UStG wird keine Umsatzsteuer ausgewiesen.'"
+      },
+      {
+        "q": "Darf ich als Kleinunternehmer Rechnungen ins Ausland stellen?",
+        "a": "Ja. Bei Rechnungen an EU-Unternehmen gelten aber besondere Regeln: Bei Dienstleistungen kann das Reverse-Charge-Verfahren greifen. Im Zweifel steuerlichen Berater hinzuziehen."
+      },
+      {
+        "q": "Kann ich als Kleinunternehmer freiwillig auf die Regelung verzichten?",
+        "a": "Ja, Sie können auf die Kleinunternehmerregelung verzichten (Option zur Regelbesteuerung). Dieser Verzicht bindet Sie für 5 Jahre und kann sinnvoll sein, wenn Sie viele Vorsteuerbeträge haben."
+      },
+      {
+        "q": "Muss ein Kleinunternehmer eine Umsatzsteuererklärung abgeben?",
+        "a": "Kleinunternehmer müssen eine Umsatzsteuerjahreserklärung abgeben, aber keine monatlichen oder vierteljährlichen Voranmeldungen. In der Erklärung wird §19 UStG angegeben."
+      }
+    ]
+  },
+  {
+    "locale": "it",
+    "slug": "modello-fattura-partita-iva-italia",
+    "lang": "it",
+    "country": "IT",
+    "keyword": "modello fattura partita IVA Italia",
+    "monthlySearches": 9000,
+    "title": "Modello Fattura Partita IVA Italia — Gratis",
+    "metaDescription": "Crea fatture professionali con Partita IVA italiana, IVA corretta e in italiano. Scarica PDF gratis senza registrazione.",
+    "h1": "Modello Fattura per Partita IVA in Italia",
+    "intro": "Se sei titolare di Partita IVA in Italia, le tue fatture devono rispettare i requisiti del D.P.R. 633/1972. Una fattura italiana valida deve riportare i dati completi del cedente e del cessionario, la Partita IVA di entrambe le parti, il numero progressivo della fattura, la descrizione dettagliata dei servizi o beni, l'imponibile, l'aliquota IVA applicata (22%, 10%, 5% o 4%) e il totale. Per i professionisti con ritenuta d'acconto, è necessario indicare anche la ritenuta al 20%. EuroInvoice genera automaticamente fatture conformi alla normativa italiana, con tutti i campi obbligatori precompilati. Scarica il tuo PDF gratuitamente, senza creare un account.",
+    "faqs": [
+      {
+        "q": "Quali dati obbligatori deve contenere una fattura con Partita IVA?",
+        "a": "Data, numero progressivo, dati completi di entrambe le parti con Partita IVA o Codice Fiscale, descrizione della prestazione, imponibile, aliquota e importo IVA, totale e, se dovuta, ritenuta d'acconto."
+      },
+      {
+        "q": "Quale aliquota IVA devo applicare?",
+        "a": "L'aliquota ordinaria è il 22%. Esistono aliquote ridotte del 10%, 5% e 4% per categorie specifiche. La maggior parte delle prestazioni professionali è soggetta al 22%."
+      },
+      {
+        "q": "Cos'è la fattura elettronica e devo emetterla?",
+        "a": "Dal 2024, tutti i titolari di Partita IVA (inclusi i forfettari sopra soglia) devono emettere fattura elettronica tramite il Sistema di Interscambio (SDI). EuroInvoice genera fatture PDF conformi per uso personale."
+      },
+      {
+        "q": "Come fatturare a clienti europei con Partita IVA?",
+        "a": "Per servizi B2B verso altri paesi UE si applica il reverse charge: la fattura viene emessa senza IVA italiana con la dicitura 'Inversione contabile - Art. 196 Direttiva IVA UE'."
+      },
+      {
+        "q": "Per quanto tempo devo conservare le fatture?",
+        "a": "Le fatture devono essere conservate per 10 anni dalla data di emissione (art. 2220 Codice Civile)."
+      }
+    ]
+  },
+  {
+    "locale": "nl",
+    "slug": "factuur-zzp-voorbeeld-nederland",
+    "lang": "nl",
+    "country": "NL",
+    "keyword": "factuur ZZP voorbeeld Nederland",
+    "monthlySearches": 8000,
+    "title": "Factuurvoorbeeld ZZP Nederland — Gratis PDF",
+    "metaDescription": "Maak professionele facturen als ZZP'er in Nederland met BTW-nummer, juiste BTW-tarief en in het Nederlands. Gratis PDF downloaden.",
+    "h1": "Factuurvoorbeeld voor ZZP'ers in Nederland",
+    "intro": "Als ZZP'er (zelfstandige zonder personeel) in Nederland ben je verplicht facturen te sturen die voldoen aan de eisen van de Belastingdienst. Je factuur moet je BTW-nummer bevatten, een volgnummer hebben, de juiste BTW-tarieven tonen (21% algemeen, 9% verlaagd of 0% vrijgesteld) en alle verplichte gegevens van jou en je klant vermelden. Als kleine ondernemingsregeling (KOR) gebruik je een speciale vrijstelling. EuroInvoice maakt automatisch correcte ZZP-facturen met je BTW-nummer (NL + 9 cijfers + B + 2 cijfers), de juiste BTW-berekening en alle wettelijk verplichte velden. Download je factuur als PDF — gratis, zonder registratie.",
+    "faqs": [
+      {
+        "q": "Welke verplichte gegevens moet een ZZP-factuur bevatten?",
+        "a": "Factuurdatum, opeenvolgend factuurnummer, naam en adres van beide partijen, BTW-nummer, beschrijving van de dienst, bedrag excl. BTW, BTW-tarief en -bedrag, en totaalbedrag incl. BTW."
+      },
+      {
+        "q": "Welk BTW-tarief geldt voor mijn diensten?",
+        "a": "Het algemene tarief is 21%. Het verlaagde tarief van 9% geldt voor bepaalde goederen en diensten. Als je gebruikmaakt van de KOR (Kleine Ondernemersregeling) hoef je geen BTW te berekenen."
+      },
+      {
+        "q": "Wat is de KOR en wanneer kom ik ervoor in aanmerking?",
+        "a": "De Kleineondernemersregeling (KOR) is een BTW-vrijstelling voor ondernemers met een omzet tot €20.000 per jaar. Je hoeft dan geen BTW te berekenen en te betalen, maar ook geen BTW terug te vragen."
+      },
+      {
+        "q": "Hoe factureer ik aan een klant in een ander EU-land?",
+        "a": "Bij B2B-diensten naar andere EU-landen pas je de verleggingsregeling toe: factuur zonder Nederlandse BTW met de vermelding 'BTW verlegd' en het BTW-nummer van de klant."
+      },
+      {
+        "q": "Hoe lang moet ik facturen bewaren?",
+        "a": "Facturen moet je 7 jaar bewaren. Dit geldt voor zowel inkomende als uitgaande facturen (art. 52 Algemene wet inzake rijksbelastingen)."
+      }
+    ]
+  },
+  {
+    "locale": "pl",
+    "slug": "faktura-freelancer-wzor-polska",
+    "lang": "pl",
+    "country": "PL",
+    "keyword": "faktura freelancer wzór Polska",
+    "monthlySearches": 5000,
+    "title": "Wzór Faktury dla Freelancera w Polsce — Darmowy PDF",
+    "metaDescription": "Twórz profesjonalne faktury dla freelancerów w Polsce z NIP, właściwą stawką VAT i po polsku. Pobierz PDF za darmo bez rejestracji.",
+    "h1": "Wzór Faktury dla Freelancera w Polsce",
+    "intro": "Jako freelancer prowadzący działalność gospodarczą w Polsce jesteś zobowiązany do wystawiania faktur zgodnych z ustawą o VAT. Prawidłowa faktura polska musi zawierać Twój NIP, dane obu stron, numer kolejny, datę wystawienia, opis usługi, wartość netto, stawkę VAT (23%, 8%, 5% lub ZW) oraz kwotę brutto. Jeśli korzystasz ze zwolnienia podmiotowego z VAT (obrót poniżej 200 000 zł rocznie), wystawiasz faktury bez VAT. EuroInvoice generuje automatycznie prawidłowe faktury zgodne z polskim prawem podatkowym: z Twoim numerem NIP, właściwymi stawkami VAT i wszystkimi obowiązkowymi polami. Pobierz fakturę jako PDF — za darmo, bez zakładania konta.",
+    "faqs": [
+      {
+        "q": "Jakie obowiązkowe elementy powinna zawierać faktura w Polsce?",
+        "a": "Data wystawienia, numer kolejny, dane obu stron z NIP, opis towaru/usługi, miara i ilość, cena jednostkowa netto, stawka VAT, kwota VAT, wartość brutto oraz data dokonania dostawy lub wykonania usługi."
+      },
+      {
+        "q": "Jaką stawkę VAT stosować jako freelancer?",
+        "a": "Podstawowa stawka to 23%. Stawki obniżone wynoszą 8% i 5% dla określonych towarów i usług. Usługi niematerialne (IT, marketing, consulting) najczęściej są opodatkowane stawką 23%."
+      },
+      {
+        "q": "Czy freelancer musi być vatowcem?",
+        "a": "Nie. Jeśli Twój obrót nie przekracza 200 000 zł rocznie, możesz korzystać ze zwolnienia podmiotowego z VAT. Wówczas wystawiasz faktury bez VAT ze wskazaniem podstawy zwolnienia."
+      },
+      {
+        "q": "Jak wystawić fakturę dla klienta z UE?",
+        "a": "Przy świadczeniu usług B2B dla firm z innych krajów UE stosuje się odwrotne obciążenie: faktura bez polskiego VAT z adnotacją 'Odwrotne obciążenie' i numerem VAT UE klienta."
+      },
+      {
+        "q": "Jak długo przechowywać faktury w Polsce?",
+        "a": "Faktury należy przechowywać przez 5 lat, licząc od końca roku kalendarzowego, w którym upłynął termin płatności podatku (art. 112 ustawy o VAT)."
+      }
+    ]
+  },
+  {
+    "locale": "es",
+    "slug": "factura-disenador-grafico-espana",
+    "lang": "es",
+    "country": "ES",
+    "keyword": "factura diseñador gráfico España",
+    "monthlySearches": 3500,
+    "title": "Factura para Diseñador Gráfico Autónomo España — Gratis",
+    "metaDescription": "Plantilla de factura para diseñadores gráficos autónomos en España. NIF, IVA 21%, IRPF incluidos. Descarga PDF gratis.",
+    "h1": "Factura para Diseñador Gráfico Autónomo en España",
+    "intro": "Los diseñadores gráficos autónomos en España emiten facturas con IVA al 21% y retención de IRPF del 15%. Si ofreces servicios de diseño web, identidad corporativa, ilustración o maquetación, tus facturas deben incluir tu NIF, la descripción detallada del trabajo realizado, la base imponible, la cuota de IVA y la retención de IRPF. Cuando facturas a clientes en otros países de la UE, se aplica la inversión del sujeto pasivo y no cobras IVA español. EuroInvoice crea automáticamente facturas correctas para diseñadores gráficos españoles: con todos los campos legales, cálculo automático de IVA e IRPF, y descarga en PDF en tu idioma.",
+    "faqs": [
+      {
+        "q": "¿Qué IVA aplica un diseñador gráfico autónomo en España?",
+        "a": "Los servicios de diseño gráfico tributan al tipo general del IVA, que es el 21%. No existe un tipo reducido específico para estos servicios."
+      },
+      {
+        "q": "¿Debo aplicar retención de IRPF en mis facturas de diseño?",
+        "a": "Sí, si facturas a empresas o profesionales en España. La retención estándar es del 15% (7% los primeros 3 años de actividad). No se aplica si el cliente es particular."
+      },
+      {
+        "q": "¿Cómo facturo a una empresa de otro país de la UE?",
+        "a": "Facturas sin IVA español aplicando la inversión del sujeto pasivo. Indica el NIF-IVA del cliente europeo y añade la mención 'Operación exenta de IVA — Art. 69 Ley del IVA'."
+      },
+      {
+        "q": "¿Qué concepto pongo en la factura si hago varios trabajos distintos?",
+        "a": "Puedes añadir una línea por cada trabajo (ej: 'Diseño de logotipo', 'Maquetación de catálogo', 'Diseño de redes sociales') con su importe individual, o agruparlos como 'Servicios de diseño gráfico — [mes]'."
+      },
+      {
+        "q": "¿Puedo facturar como diseñador gráfico sin ser autónomo?",
+        "a": "Si realizas trabajos de forma habitual y con independencia, la Agencia Tributaria exige que estés dado de alta como autónomo. Los trabajos puntuales y esporádicos pueden gestionarse de otra forma, pero consulta con un gestor."
+      }
+    ]
+  },
+  {
+    "locale": "fr",
+    "slug": "facture-developpeur-freelance-france",
+    "lang": "fr",
+    "country": "FR",
+    "keyword": "facture développeur freelance France",
+    "monthlySearches": 4500,
+    "title": "Facture Développeur Freelance France — Modèle Gratuit",
+    "metaDescription": "Modèle de facture pour développeurs freelance en France. SIRET, TVA, mentions légales inclus. Téléchargez en PDF gratuitement.",
+    "h1": "Modèle de Facture pour Développeur Freelance en France",
+    "intro": "En tant que développeur freelance en France, que vous soyez en micro-entreprise, en EURL ou en portage salarial, vos factures doivent respecter les exigences légales françaises. Les développeurs web et logiciels facturent généralement au taux normal de TVA de 20%, sauf en franchise de base si le chiffre d'affaires annuel est inférieur à 36 800 €. Votre facture doit obligatoirement mentionner votre numéro SIRET, une description précise de la prestation (développement front-end, back-end, API, mobile, etc.), et les conditions de paiement. EuroInvoice génère des factures conformes pour les développeurs freelance français, avec toutes les mentions légales obligatoires, calcul automatique de la TVA et téléchargement PDF gratuit.",
+    "faqs": [
+      {
+        "q": "Quel taux de TVA applique un développeur freelance en France ?",
+        "a": "Les prestations de développement logiciel sont soumises au taux normal de TVA à 20%. En franchise de base (CA < 36 800 €/an), vous facturez sans TVA avec la mention 'TVA non applicable, art. 293 B du CGI'."
+      },
+      {
+        "q": "Comment décrire les prestations de développement sur une facture ?",
+        "a": "Soyez précis : 'Développement application web React — Sprint du 01/03 au 31/03', 'Intégration API REST', 'Maintenance corrective', etc. Évitez les descriptions vagues comme 'Prestation informatique'."
+      },
+      {
+        "q": "Puis-je facturer en acompte pour un projet de développement ?",
+        "a": "Oui, les acomptes sont courants en freelance. Émettez une facture d'acompte dès réception (ex: 30% à la commande) puis la facture de solde à la livraison. Chaque acompte doit faire l'objet d'une facture distincte."
+      },
+      {
+        "q": "Comment facturer un client étranger hors UE (USA, Canada, etc.) ?",
+        "a": "Les prestations de services à des entreprises hors UE sont exonérées de TVA française. Facturez HT sans TVA et mentionnez 'Exonération de TVA - Art. 259-1 du CGI'."
+      },
+      {
+        "q": "Quels délais de paiement puis-je imposer sur mes factures ?",
+        "a": "En France, le délai légal maximum est de 30 jours après réception de la facture (60 jours par accord contractuel). Mentionnez les pénalités de retard légales : taux BCE + 10 points, minimum 40 € d'indemnité forfaitaire."
+      }
+    ]
+  },
+  {
+    "locale": "en",
+    "slug": "freelance-invoice-template-ireland",
+    "lang": "en",
+    "country": "IE",
+    "keyword": "freelance invoice template Ireland",
+    "monthlySearches": 2500,
+    "title": "Freelance Invoice Template Ireland — Free PDF",
+    "metaDescription": "Create professional freelance invoices for Ireland with VAT number, correct Irish VAT rates and in English. Free PDF download, no account required.",
+    "h1": "Freelance Invoice Template for Ireland",
+    "intro": "As a freelancer in Ireland, your invoices must comply with Revenue requirements. Irish freelance invoices must include your VAT registration number (if VAT registered), a sequential invoice number, the date of supply, a description of services, the VAT rate (23% standard, 13.5% reduced, or 0% zero-rated), and the VAT amount. If your annual turnover is below €37,500 for services, you are not required to register for VAT, but you can do so voluntarily. EuroInvoice automatically generates compliant Irish freelance invoices with all required Revenue fields pre-filled, correct VAT rates, and your Irish VAT number in the correct format (IE + 7 digits + 1-2 letters). Download your invoice as a PDF — free, no account needed.",
+    "faqs": [
+      {
+        "q": "What information must a freelance invoice include in Ireland?",
+        "a": "Your name and address, client name and address, VAT registration number (if applicable), sequential invoice number, date of issue and supply, description of services, amount excluding VAT, VAT rate and amount, and total amount due."
+      },
+      {
+        "q": "What VAT rate do I charge as a freelancer in Ireland?",
+        "a": "The standard VAT rate is 23%. A reduced rate of 13.5% applies to certain services. Most professional services (consulting, design, development, writing) are charged at 23%."
+      },
+      {
+        "q": "Do I need to register for VAT as a freelancer in Ireland?",
+        "a": "You must register for VAT if your annual turnover exceeds €37,500 (services) or €75,000 (goods). Below these thresholds, registration is optional but can be beneficial if you have significant business expenses."
+      },
+      {
+        "q": "How do I invoice EU clients from Ireland?",
+        "a": "For B2B services to VAT-registered EU businesses, apply the reverse charge mechanism: issue the invoice without Irish VAT, include the client's VAT number, and add the note 'VAT reverse charge — Article 196 EU VAT Directive'."
+      },
+      {
+        "q": "How long must I keep invoices in Ireland?",
+        "a": "Revenue requires you to keep records, including invoices, for 6 years. This applies to both paper and electronic records."
+      }
+    ]
+  }
+]
