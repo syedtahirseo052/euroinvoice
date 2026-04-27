@@ -102,15 +102,48 @@ export default function PostsPage() {
     }
 
     if (editingPost) {
+      // Try direct Supabase first, fallback to admin API
       const { error } = await supabase
         .from("blog_posts")
         .update({ ...payload, updated_at: new Date().toISOString() })
         .eq("id", editingPost.id)
-      setMsg(error ? `Error: ${error.message}` : "✅ Post updated!")
+
+      if (error) {
+        // Fallback: use admin API route
+        const res = await fetch("/api/admin/insert-post", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...payload, updated_at: new Date().toISOString() }),
+        })
+        const json = await res.json()
+        setMsg(json.success ? "✅ Post updated!" : `Error: ${json.error}`)
+      } else {
+        setMsg("✅ Post updated!")
+      }
     } else {
+      // Try direct Supabase first, fallback to admin API
       const { error } = await supabase.from("blog_posts").insert(payload)
-      setMsg(error ? `Error: ${error.message}` : "✅ Post created!")
-      if (!error) { setView("list"); loadPosts() }
+
+      if (error) {
+        // Fallback: use admin API route
+        const res = await fetch("/api/admin/insert-post", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        })
+        const json = await res.json()
+        if (json.success) {
+          setMsg("✅ Post created!")
+          setView("list")
+          loadPosts()
+        } else {
+          setMsg(`Error: ${json.error}`)
+        }
+      } else {
+        setMsg("✅ Post created!")
+        setView("list")
+        loadPosts()
+      }
     }
 
     setSaving(false)
@@ -263,15 +296,31 @@ export default function PostsPage() {
               </div>
 
               <div className="space-y-2">
-                <Label>
-                  Content *{" "}
-                  <span className="text-gray-400 font-normal">(separate paragraphs with blank line · ALL CAPS line = heading)</span>
-                </Label>
+                <Label>Content *</Label>
+
+                {/* Formatting guide */}
+                <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs text-slate-600">
+                  <p className="font-semibold text-slate-800 mb-3">✍️ Heading & Formatting Guide:</p>
+                  <div className="grid grid-cols-2 gap-x-8 gap-y-1.5 font-mono">
+                    <span className="text-blue-700"># Main Title</span>        <span className="text-slate-500">→ H1 — biggest heading</span>
+                    <span className="text-blue-700">## Section</span>          <span className="text-slate-500">→ H2 — with blue bar</span>
+                    <span className="text-blue-700">### Subsection</span>      <span className="text-slate-500">→ H3 heading</span>
+                    <span className="text-blue-700">#### Small</span>          <span className="text-slate-500">→ H4 heading</span>
+                    <span className="text-blue-700">- List item</span>         <span className="text-slate-500">→ Bullet point</span>
+                    <span className="text-blue-700">1. First item</span>       <span className="text-slate-500">→ Numbered list</span>
+                    <span className="text-blue-700">**bold**</span>            <span className="text-slate-500">→ Bold text</span>
+                    <span className="text-blue-700">*italic*</span>            <span className="text-slate-500">→ Italic text</span>
+                    <span className="text-blue-700">&gt; quote text</span>     <span className="text-slate-500">→ Blue quote box</span>
+                    <span className="text-blue-700">---</span>                 <span className="text-slate-500">→ Divider line</span>
+                  </div>
+                  <p className="text-amber-600 font-medium mt-3">⚠️ Always leave a blank line between paragraphs and headings!</p>
+                </div>
+
                 <textarea
-                  className="flex min-h-[320px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  className="flex min-h-[420px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm font-mono ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
-                  placeholder={`Write your blog post here...\n\nStart a new paragraph by leaving a blank line.\n\nWRITE IN ALL CAPS FOR A SECTION HEADING`}
+                  placeholder={"## Introduction\n\nWrite your intro paragraph here.\n\n## Why This Matters\n\nAnother paragraph here.\n\n### Key Points\n\n- First point\n- Second point\n- Third point\n\n## Conclusion\n\nYour closing paragraph."}
                 />
               </div>
 

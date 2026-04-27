@@ -68,24 +68,114 @@ function readTime(content: string) {
   return Math.max(3, Math.ceil(content.split(" ").length / 200))
 }
 
+function renderInline(text: string) {
+  // Handle **bold** and *italic* inline
+  const parts = text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g)
+  return parts.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**"))
+      return <strong key={i}>{part.slice(2, -2)}</strong>
+    if (part.startsWith("*") && part.endsWith("*"))
+      return <em key={i}>{part.slice(1, -1)}</em>
+    return part
+  })
+}
+
 function renderContent(content: string) {
-  return content.split("\n\n").map((para, i) => {
-    // Detect ALL-CAPS lines as subheadings
-    const trimmed = para.trim()
-    const isHeading = trimmed === trimmed.toUpperCase() && trimmed.length > 5 && trimmed.length < 80 && /^[A-Z]/.test(trimmed)
-    if (isHeading) {
-      return (
-        <h2 key={i} className="text-xl font-bold text-gray-900 mt-10 mb-3 border-l-4 border-blue-500 pl-4">
-          {trimmed}
+  const blocks = content.split("\n\n")
+  const elements: React.ReactNode[] = []
+
+  for (let i = 0; i < blocks.length; i++) {
+    const raw = blocks[i].trim()
+    if (!raw) continue
+
+    // ── Markdown headings: # ## ### #### ##### ######
+    if (/^#{1,6}\s/.test(raw)) {
+      const level = raw.match(/^(#+)/)?.[1].length ?? 2
+      const text  = raw.replace(/^#+\s+/, "")
+      const cls: Record<number, string> = {
+        1: "text-3xl font-bold text-gray-900 mt-12 mb-4",
+        2: "text-2xl font-bold text-gray-900 mt-10 mb-3 border-l-4 border-blue-500 pl-4",
+        3: "text-xl font-bold text-gray-900 mt-8 mb-3",
+        4: "text-lg font-semibold text-gray-800 mt-6 mb-2",
+        5: "text-base font-semibold text-gray-700 mt-5 mb-2",
+        6: "text-sm font-semibold text-gray-600 mt-4 mb-2 uppercase tracking-wider",
+      }
+      const Tag = `h${level}` as keyof JSX.IntrinsicElements
+      elements.push(
+        <Tag key={i} className={cls[level] ?? cls[2]}>
+          {renderInline(text)}
+        </Tag>
+      )
+      continue
+    }
+
+    // ── ALL-CAPS line → h2 (backward compat for old posts)
+    const isAllCaps = raw === raw.toUpperCase() && raw.length > 5 && raw.length < 100 && /^[A-Z]/.test(raw) && !/^[-•*]/.test(raw)
+    if (isAllCaps) {
+      elements.push(
+        <h2 key={i} className="text-2xl font-bold text-gray-900 mt-10 mb-3 border-l-4 border-blue-500 pl-4">
+          {raw}
         </h2>
       )
+      continue
     }
-    return (
+
+    // ── Bullet list block (lines starting with - or • or *)
+    const lines = raw.split("\n")
+    const isList = lines.every(l => /^[-•*]\s/.test(l.trim()) || l.trim() === "")
+    if (isList) {
+      elements.push(
+        <ul key={i} className="list-disc pl-6 mb-5 space-y-1.5">
+          {lines.filter(l => l.trim()).map((l, j) => (
+            <li key={j} className="text-gray-600 text-base leading-relaxed">
+              {renderInline(l.replace(/^[-•*]\s+/, ""))}
+            </li>
+          ))}
+        </ul>
+      )
+      continue
+    }
+
+    // ── Numbered list block (lines starting with 1. 2. etc.)
+    const isNumbered = lines.every(l => /^\d+\.\s/.test(l.trim()) || l.trim() === "")
+    if (isNumbered) {
+      elements.push(
+        <ol key={i} className="list-decimal pl-6 mb-5 space-y-1.5">
+          {lines.filter(l => l.trim()).map((l, j) => (
+            <li key={j} className="text-gray-600 text-base leading-relaxed">
+              {renderInline(l.replace(/^\d+\.\s+/, ""))}
+            </li>
+          ))}
+        </ol>
+      )
+      continue
+    }
+
+    // ── Blockquote (line starts with >)
+    if (raw.startsWith(">")) {
+      elements.push(
+        <blockquote key={i} className="border-l-4 border-blue-400 bg-blue-50 pl-5 pr-4 py-3 mb-5 rounded-r-xl italic text-gray-700">
+          {renderInline(raw.replace(/^>\s*/, ""))}
+        </blockquote>
+      )
+      continue
+    }
+
+    // ── Horizontal rule ---
+    if (/^---+$/.test(raw)) {
+      elements.push(<hr key={i} className="my-8 border-gray-200" />)
+      continue
+    }
+
+    // ── Regular paragraph
+    elements.push(
       <p key={i} className="mb-5 leading-relaxed text-gray-600 text-base">
-        {para}
+        {renderInline(raw)}
       </p>
     )
-  })
+  }
+
+  return elements
 }
 
 export default async function BlogPostPage({
