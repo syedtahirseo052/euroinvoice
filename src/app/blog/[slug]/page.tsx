@@ -246,10 +246,30 @@ export default async function BlogPostPage({
           </div>
         )}
 
-        {/* Body */}
-        <div className="prose-custom">
-          {renderContent(post.content)}
-        </div>
+        {/* Body — HTML (from rich editor) or plain text/markdown */}
+        {post.content?.trimStart().startsWith("<") ? (
+          <div
+            className="prose prose-gray prose-lg max-w-none
+              prose-headings:font-bold prose-headings:text-gray-900
+              prose-h1:text-3xl prose-h1:mt-10 prose-h1:mb-4
+              prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-3 prose-h2:border-l-4 prose-h2:border-blue-500 prose-h2:pl-4
+              prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-2
+              prose-h4:text-lg prose-h4:mt-5 prose-h4:mb-2
+              prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-4
+              prose-a:text-blue-600 prose-a:underline hover:prose-a:text-blue-800
+              prose-strong:text-gray-900 prose-strong:font-semibold
+              prose-ul:pl-6 prose-ul:space-y-1 prose-ul:text-gray-600
+              prose-ol:pl-6 prose-ol:space-y-1 prose-ol:text-gray-600
+              prose-blockquote:border-l-4 prose-blockquote:border-blue-400 prose-blockquote:bg-blue-50 prose-blockquote:px-5 prose-blockquote:py-3 prose-blockquote:rounded-r-xl prose-blockquote:not-italic
+              prose-code:bg-gray-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:text-blue-700
+              prose-hr:my-8 prose-hr:border-gray-200"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+        ) : (
+          <div className="prose-custom">
+            {renderContent(post.content)}
+          </div>
+        )}
 
         {/* Tags / meta */}
         <div className="mt-12 pt-8 border-t flex items-center justify-between flex-wrap gap-4">

@@ -7,6 +7,12 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { supabase } from "@/lib/supabase"
 import { Loader2, Plus, Trash2, Eye, EyeOff, Search, User } from "lucide-react"
+import dynamic from "next/dynamic"
+
+const RichTextEditor = dynamic(() => import("@/components/RichTextEditor"), {
+  ssr: false,
+  loading: () => <div className="h-[420px] border rounded-xl bg-gray-50 animate-pulse" />,
+})
 
 interface BlogPost {
   id: string
@@ -297,30 +303,10 @@ export default function PostsPage() {
 
               <div className="space-y-2">
                 <Label>Content *</Label>
-
-                {/* Formatting guide */}
-                <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs text-slate-600">
-                  <p className="font-semibold text-slate-800 mb-3">✍️ Heading & Formatting Guide:</p>
-                  <div className="grid grid-cols-2 gap-x-8 gap-y-1.5 font-mono">
-                    <span className="text-blue-700"># Main Title</span>        <span className="text-slate-500">→ H1 — biggest heading</span>
-                    <span className="text-blue-700">## Section</span>          <span className="text-slate-500">→ H2 — with blue bar</span>
-                    <span className="text-blue-700">### Subsection</span>      <span className="text-slate-500">→ H3 heading</span>
-                    <span className="text-blue-700">#### Small</span>          <span className="text-slate-500">→ H4 heading</span>
-                    <span className="text-blue-700">- List item</span>         <span className="text-slate-500">→ Bullet point</span>
-                    <span className="text-blue-700">1. First item</span>       <span className="text-slate-500">→ Numbered list</span>
-                    <span className="text-blue-700">**bold**</span>            <span className="text-slate-500">→ Bold text</span>
-                    <span className="text-blue-700">*italic*</span>            <span className="text-slate-500">→ Italic text</span>
-                    <span className="text-blue-700">&gt; quote text</span>     <span className="text-slate-500">→ Blue quote box</span>
-                    <span className="text-blue-700">---</span>                 <span className="text-slate-500">→ Divider line</span>
-                  </div>
-                  <p className="text-amber-600 font-medium mt-3">⚠️ Always leave a blank line between paragraphs and headings!</p>
-                </div>
-
-                <textarea
-                  className="flex min-h-[420px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm font-mono ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                <RichTextEditor
                   value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                  placeholder={"## Introduction\n\nWrite your intro paragraph here.\n\n## Why This Matters\n\nAnother paragraph here.\n\n### Key Points\n\n- First point\n- Second point\n- Third point\n\n## Conclusion\n\nYour closing paragraph."}
+                  onChange={setContent}
+                  placeholder="Start writing your blog post here... Use H1, H2, H3 buttons for headings, Bold for keywords, and the link button to add URLs."
                 />
               </div>
 
