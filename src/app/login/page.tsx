@@ -9,8 +9,6 @@ import { Label } from "@/components/ui/label"
 import { FileText, Loader2, Eye, EyeOff } from "lucide-react"
 import { supabase } from "@/lib/supabase"
 
-const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL
-
 export default function LoginPage() {
   const router = useRouter()
   const [mode, setMode] = useState<"login" | "signup">("login")
@@ -34,14 +32,9 @@ export default function LoginPage() {
         if (error) throw error
         setSuccess("Account created! Check your email to confirm.")
       } else {
-        const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+        const { error } = await supabase.auth.signInWithPassword({ email, password })
         if (error) throw error
-        // Admin → go to admin panel, user → go to dashboard
-        if (data.user?.email === ADMIN_EMAIL) {
-          router.push("/admin")
-        } else {
-          router.push("/dashboard")
-        }
+        router.push("/dashboard")
         router.refresh()
       }
     } catch (err: unknown) {

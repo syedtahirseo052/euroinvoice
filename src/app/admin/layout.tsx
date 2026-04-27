@@ -17,7 +17,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
-      if (!session) { router.push("/login"); return }
+      if (!session) { router.push("/admin/login"); return }
       if (session.user.email !== ADMIN_EMAIL) { router.push("/"); return }
       setAuthorized(true)
       setChecking(false)
@@ -78,7 +78,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {/* Sign out */}
         <div className="p-3 border-t border-gray-700 shrink-0">
           <button
-            onClick={async () => { await supabase.auth.signOut(); router.push("/") }}
+            onClick={async () => { await supabase.auth.signOut(); router.push("/admin/login") }}
             className="flex items-center gap-3 px-3 py-2.5 w-full rounded-md text-sm font-medium text-gray-400 hover:bg-gray-800 hover:text-white transition-colors"
           >
             <LogOut className="h-4 w-4" />
