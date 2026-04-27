@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
-import Navbar from "@/components/Navbar"
-import Footer from "@/components/Footer"
+import ConditionalLayout from "@/components/ConditionalLayout"
 
 export const metadata: Metadata = {
   title: "EuroInvoice — Free Invoice Generator for EU Freelancers",
@@ -18,9 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ConditionalLayout>{children}</ConditionalLayout>
       </body>
     </html>
   )

@@ -3,7 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { supabase } from "@/lib/supabase"
 import { Button } from "@/components/ui/button"
-import { Calendar, Clock, ArrowLeft, ArrowRight } from "lucide-react"
+import { Calendar, Clock, ArrowLeft, ArrowRight, User } from "lucide-react"
 import type { Metadata } from "next"
 
 export const revalidate = 60
@@ -20,6 +20,8 @@ async function getPost(slug: string) {
   return data
 }
 
+const SITE_URL = process.env.NEXT_PUBLIC_APP_URL || "https://charming-choux-c5a879.netlify.app"
+
 export async function generateMetadata({
   params,
 }: {
@@ -27,11 +29,31 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const post = await getPost(params.slug)
   if (!post) return {}
+
+  const metaTitle       = post.meta_title       || `${post.title} — EuroInvoice Blog`
+  const metaDescription = post.meta_description || post.excerpt || post.content.slice(0, 160)
+  const canonicalUrl    = `${SITE_URL}/blog/${post.slug}`
+  const ogImage         = post.image_url || `${SITE_URL}/og-default.jpg`
+
   return {
-    title: `${post.title} — EuroInvoice Blog`,
-    description: post.excerpt ?? post.content.slice(0, 155),
+    title: metaTitle,
+    description: metaDescription,
+    alternates: { canonical: canonicalUrl },
     openGraph: {
-      images: post.image_url ? [post.image_url] : [],
+      title:       metaTitle,
+      description: metaDescription,
+      url:         canonicalUrl,
+      siteName:    "EuroInvoice",
+      images:      [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
+      type:        "article",
+      publishedTime: post.created_at,
+      authors:     post.author_name ? [post.author_name] : ["EuroInvoice Team"],
+    },
+    twitter: {
+      card:        "summary_large_image",
+      title:       metaTitle,
+      description: metaDescription,
+      images:      [ogImage],
     },
   }
 }
@@ -149,6 +171,39 @@ export default async function BlogPostPage({
           <Link href="/blog" className="text-sm text-gray-400 hover:text-blue-600 flex items-center gap-1 transition-colors">
             More articles <ArrowRight className="h-3.5 w-3.5" />
           </Link>
+        </div>
+
+        {/* ── Author card ── */}
+        <div className="mt-10 bg-gray-50 border border-gray-200 rounded-2xl p-6 flex items-start gap-5">
+          {/* Avatar */}
+          {post.author_avatar ? (
+            <img
+              src={post.author_avatar}
+              alt={post.author_name || "Author"}
+              className="h-16 w-16 rounded-full object-cover shrink-0 border-2 border-white shadow"
+            />
+          ) : (
+            <div className="h-16 w-16 rounded-full bg-gradient-to-br from-blue-500 to-violet-600 flex items-center justify-center shrink-0 shadow">
+              <User className="h-7 w-7 text-white" />
+            </div>
+          )}
+          {/* Info */}
+          <div className="flex-1 min-w-0">
+            <p className="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-0.5">Written by</p>
+            <h3 className="text-lg font-bold text-gray-900">
+              {post.author_name || "EuroInvoice Team"}
+            </h3>
+            {post.author_bio && (
+              <p className="text-sm text-gray-500 mt-1 leading-relaxed">{post.author_bio}</p>
+            )}
+            <div className="flex items-center gap-2 mt-2 text-xs text-gray-400">
+              <Calendar className="h-3.5 w-3.5" />
+              Published {formatDate(post.created_at)}
+              <span>·</span>
+              <Clock className="h-3.5 w-3.5" />
+              {mins} min read
+            </div>
+          </div>
         </div>
 
         {/* ── CTA box ── */}
