@@ -16,13 +16,21 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
+    // Skip auth check on the login page itself
+    if (pathname === "/admin/login") {
+      setChecking(false)
+      return
+    }
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (!session) { router.push("/admin/login"); return }
       if (session.user.email !== ADMIN_EMAIL) { router.push("/"); return }
       setAuthorized(true)
       setChecking(false)
     })
-  }, [router])
+  }, [router, pathname])
+
+  // On the login page — render it directly with no sidebar/layout
+  if (pathname === "/admin/login") return <>{children}</>
 
   if (checking) return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
